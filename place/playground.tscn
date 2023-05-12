@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dr1sd04v5jh2m"]
+
+[ext_resource type="Texture2D" uid="uid://d1lb8cec4r07g" path="res://place/line.jpg" id="1_o2k72"]
+[ext_resource type="Script" path="res://place/Area2D.gd" id="2_i7fyd"]
+[ext_resource type="Script" path="res://place/Area2D2.gd" id="3_h6vpy"]
+[ext_resource type="PackedScene" uid="uid://cso3i1g2qcs1u" path="res://ballScreen/area_2d.tscn" id="4_d680m"]
+[ext_resource type="Script" path="res://place/Area2D4.gd" id="5_1wlxl"]
+[ext_resource type="Script" path="res://place/Area2D5.gd" id="6_fak17"]
+[ext_resource type="Script" path="res://place/Label.gd" id="7_xx53o"]
+[ext_resource type="PackedScene" uid="uid://cp0vlf6jldifc" path="res://player/players.tscn" id="8_aaauu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_377fs"]
+size = Vector2(42, 668)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q6wn"]
+size = Vector2(1168, 20)
+
+[node name="playground" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 321)
+scale = Vector2(0.0480771, 1.10878)
+texture = ExtResource("1_o2k72")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_i7fyd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(11, 324)
+shape = SubResource("RectangleShape2D_377fs")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(1128, -3)
+script = ExtResource("3_h6vpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(11, 324)
+shape = SubResource("RectangleShape2D_377fs")
+
+[node name="Area2D3" parent="." instance=ExtResource("4_d680m")]
+position = Vector2(578, 320)
+
+[node name="Area2D4" type="Area2D" parent="."]
+script = ExtResource("5_1wlxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(574, 0)
+shape = SubResource("RectangleShape2D_3q6wn")
+
+[node name="Area2D5" type="Area2D" parent="."]
+position = Vector2(2, 649)
+script = ExtResource("6_fak17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2(574, 0)
+shape = SubResource("RectangleShape2D_3q6wn")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 268.0
+offset_top = 74.0
+offset_right = 484.0
+offset_bottom = 152.0
+script = ExtResource("7_xx53o")
+
+[node name="players" parent="." instance=ExtResource("8_aaauu")]
